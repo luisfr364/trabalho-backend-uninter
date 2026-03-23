@@ -13,6 +13,10 @@ public class Pedido {
     private Long produtoId;
     private Integer quantidade;
 
+    public Pedido() {
+
+    }
+
     public Long getClienteId() {
         return clienteId;
     }
@@ -41,5 +45,13 @@ public class Pedido {
         this.clienteId = clienteId;
         this.produtoId = produtoId;
         this.quantidade = quantidade;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

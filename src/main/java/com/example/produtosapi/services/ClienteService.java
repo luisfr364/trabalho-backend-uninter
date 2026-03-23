@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,18 +18,14 @@ public class ClienteService {
         this.repository = repository;
     }
 
-    public Cliente criarCliente(String nome, LocalDate clienteDesde) {
-        Cliente newCustomer = new Cliente(nome, clienteDesde);
-        return repository.save(newCustomer);
-    }
-
     public Cliente criarCliente(Cliente cliente) {
         return repository.save(cliente);
     }
 
     public Cliente buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado"));
+                         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                                                        "Cliente nao encontrado"));
     }
 
     public List<Cliente> listarTodos() {

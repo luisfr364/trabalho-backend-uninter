@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -20,18 +19,14 @@ public class ProdutoService {
         this.repository = repository;
     }
 
-    public Produto criarProduto(String nome, BigDecimal preco, Boolean estoque) {
-        Produto newProduct = new Produto(nome, preco, estoque);
-        return repository.save(newProduct);
-    }
-
     public Produto criarProduto(Produto produto) {
         return repository.save(produto);
     }
 
     public Produto buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto nao encontrado"));
+                         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                                                        "Produto nao encontrado"));
     }
 
     public List<Produto> listarTodos() {
